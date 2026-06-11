@@ -1,0 +1,23 @@
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { ThemeProvider } from './ThemeContext';
+import { AuthProvider } from './AuthContext';
+import { LanguageProvider } from './LanguageContext';
+import Home from './pages/Home';
+import PlaceDetailsPage from './pages/PlaceDetailsPage';
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <ThemeProvider>
+        <LanguageProvider>
+          <AuthProvider>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/place/:id" element={<PlaceDetailsPage />} />
+            </Routes>
+          </AuthProvider>
+        </LanguageProvider>
+      </ThemeProvider>
+    </BrowserRouter>
+  );
+}
